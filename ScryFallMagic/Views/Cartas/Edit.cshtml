@@ -1,0 +1,64 @@
+﻿@model ScryFallMagic.Entities.Carta
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Carta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Texto" class="control-label"></label>
+                <input asp-for="Texto" class="form-control" />
+                <span asp-validation-for="Texto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Raridade" class="control-label"></label>
+                <select asp-for="Raridade" class="form-control" asp-items="Html.GetEnumSelectList<RaridadeEnum>()"></select>
+                <span asp-validation-for="Raridade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Idioma" class="control-label"></label>
+                <select asp-for="Idioma" class="form-control" asp-items="Html.GetEnumSelectList<IdiomaEnum>()"></select>
+                <span asp-validation-for="Idioma" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustoMana" class="control-label"></label>
+                <input asp-for="CustoMana" class="form-control" />
+                <span asp-validation-for="CustoMana" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataLancamento" class="control-label"></label>
+                <input asp-for="DataLancamento" class="form-control" />
+                <span asp-validation-for="DataLancamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ColecaoId" class="control-label"></label>
+                <select asp-for="ColecaoId" class="form-control" asp-items="ViewBag.ColecaoId"></select>
+                <span asp-validation-for="ColecaoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
